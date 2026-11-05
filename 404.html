@@ -7,7 +7,7 @@ appsheet:["AppSheet","https://www.appsheet.com/start/175bade3-39fc-44db-9440-260
 aplikacja:["Aplikacja","cmmsur://maszyna/{ID}"]};
 var p=location.pathname.replace(/\/+$/,"").split("/"),ID=new URLSearchParams(location.search).get("id")||decodeURIComponent(p[p.length-1]||"");
 function U(k){return S[k][1].replace("{ID}",encodeURIComponent(ID))}
-if(ID&&S[CEL])location.replace(U(CEL)); // przekierowanie natychmiast, zanim cokolwiek się narysuje
+var IDZIE=!!(ID&&S[CEL]);if(IDZIE){document.documentElement.style.visibility="hidden";location.replace(U(CEL));} // przekierowanie natychmiast, bez pokazywania przycisków
 </script>
 <link rel="preconnect" href="https://script.google.com">
 <meta name="viewport" content="width=device-width,initial-scale=1"><title>CMMS</title>
