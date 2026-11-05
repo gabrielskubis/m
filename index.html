@@ -1,0 +1,17 @@
+<!doctype html><html lang="pl"><head><meta charset="utf-8">
+<script>
+// KONFIGURACJA: zmieniasz tylko CEL. {ID} = ID maszyny.
+var CEL="appsscript"; // "appsscript" | "appsheet" | "aplikacja" | "wybor"
+var S={appsscript:["Apps Script","https://script.google.com/a/macros/holcim.com/s/AKfycbwTbOK_h6VQGvG6dM5tZpTUSn9HSPHYftHUfeFxIpZGYynMWlrwbr1p5XBTS8RmaHKCPA/exec?id={ID}"],
+appsheet:["AppSheet","https://www.appsheet.com/start/175bade3-39fc-44db-9440-260bc4894983#view=1.%20Urz%C4%85dzenia_Detail&row={ID}"],
+aplikacja:["Aplikacja","cmmsur://maszyna/{ID}"]};
+var p=location.pathname.replace(/\/+$/,"").split("/"),ID=new URLSearchParams(location.search).get("id")||decodeURIComponent(p[p.length-1]||"");
+function U(k){return S[k][1].replace("{ID}",encodeURIComponent(ID))}
+if(ID&&S[CEL])location.replace(U(CEL)); // przekierowanie natychmiast, zanim cokolwiek się narysuje
+</script>
+<link rel="preconnect" href="https://script.google.com">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>CMMS</title>
+<style>body{font:18px system-ui,sans-serif;text-align:center;padding:24px}a{display:block;margin:12px auto;max-width:320px;padding:16px;border-radius:10px;background:#1d4ed8;color:#fff;text-decoration:none}</style>
+</head><body><h1 id="i"></h1><div id="b"></div>
+<script>document.getElementById("i").textContent=ID||"brak ID";for(var k in S){var a=document.createElement("a");a.href=U(k);a.textContent="Otwórz w: "+S[k][0];document.getElementById("b").appendChild(a)}</script>
+</body></html>
